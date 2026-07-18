@@ -66,7 +66,7 @@ this.attackStarted = false;
             right: "D"
         });
 
-        this.vipSpeed = 70;
+        this.vipSpeed = 20;
 
         this.missionComplete = false;
         this.protectionText = this.add.text(
