@@ -1,9 +1,7 @@
 class MenuScene extends Phaser.Scene {
 
     constructor() {
-
         super("MenuScene");
-
     }
 
     create() {
@@ -13,33 +11,23 @@ class MenuScene extends Phaser.Scene {
 
         this.cameras.main.setBackgroundColor(Theme.Colors.background);
 
-        this.add.text(
+        new Title(
+            this,
             width / 2,
             180,
-            "CLOSE PROTECTION",
-            Theme.Fonts.title
-        ).setOrigin(0.5);
+            "CLOSE PROTECTION"
+        );
 
         new Button(
-
             this,
-
             width / 2,
-
             height / 2,
-
             320,
-
             70,
-
             "START GAME",
-
             () => {
-
                 this.scene.start("GameScene");
-
             }
-
         );
 
     }
