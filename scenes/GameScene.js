@@ -210,12 +210,13 @@ if (
     this.suspicious.fillColor = 0xffff00;
 
 }
-
-        // ------------------------
+        
+// ------------------------
 // Suspicious Person reaches VIP
 // ------------------------
 
 if (
+    !this.attackerStopped &&
     Phaser.Math.Distance.Between(
         this.suspicious.x,
         this.suspicious.y,
