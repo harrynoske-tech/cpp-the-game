@@ -151,7 +151,20 @@ for (const civilian of this.civilians) {
 // Suspicious Person AI
 // ------------------------
 
-if (!this.attackStarted) {
+if (this.attackerStopped) {
+
+    const escapeAngle = Phaser.Math.Angle.Between(
+        this.player.x,
+        this.player.y,
+        this.suspicious.x,
+        this.suspicious.y
+    );
+
+    this.suspicious.x += Math.cos(escapeAngle) * 120 * (delta / 1000);
+    this.suspicious.y += Math.sin(escapeAngle) * 120 * (delta / 1000);
+
+}
+else if (!this.attackStarted) {
 
     const suspiciousAngle = Phaser.Math.Angle.Between(
         this.suspicious.x,
