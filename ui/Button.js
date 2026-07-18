@@ -6,28 +6,60 @@ class Button extends Phaser.GameObjects.Container {
 
         this.callback = callback;
 
-        this.background = scene.add.graphics();
+        this.width = width;
+        this.height = height;
 
-        this.background.fillStyle(Theme.Colors.accent, 1);
-        this.background.fillRoundedRect(
-            -width / 2,
-            -height / 2,
+        this.shadow = scene.add.rectangle(
+            0,
+            6,
             width,
             height,
-            14
+            0x000000,
+            0.35
         );
 
-        this.label = scene.add.text(0, 0, text, {
-            fontFamily: "Arial",
-            fontSize: "28px",
-            fontStyle: "bold",
-            color: Theme.Colors.white
-        });
+        this.shadow.setOrigin(0.5);
+
+        this.glow = scene.add.rectangle(
+            0,
+            0,
+            width + 10,
+            height + 10,
+            Theme.Colors.accent,
+            0.15
+        );
+
+        this.glow.setOrigin(0.5);
+        this.glow.setVisible(false);
+
+        this.background = scene.add.rectangle(
+            0,
+            0,
+            width,
+            height,
+            Theme.Colors.surfaceLight
+        );
+
+        this.background.setStrokeStyle(
+            2,
+            Theme.Colors.accent
+        );
+
+        this.label = scene.add.text(
+            0,
+            0,
+            text,
+            Theme.Fonts.body
+        );
 
         this.label.setOrigin(0.5);
 
-        this.add(this.background);
-        this.add(this.label);
+        this.add([
+            this.shadow,
+            this.glow,
+            this.background,
+            this.label
+        ]);
 
         this.setSize(width, height);
 
@@ -43,25 +75,49 @@ class Button extends Phaser.GameObjects.Container {
 
         this.on("pointerover", () => {
 
-            this.setScale(1.03);
+            this.glow.setVisible(true);
+
+            scene.tweens.add({
+                targets: this,
+                scaleX: 1.03,
+                scaleY: 1.03,
+                duration: 120
+            });
 
         });
 
         this.on("pointerout", () => {
 
-            this.setScale(1);
+            this.glow.setVisible(false);
+
+            scene.tweens.add({
+                targets: this,
+                scaleX: 1,
+                scaleY: 1,
+                duration: 120
+            });
 
         });
 
         this.on("pointerdown", () => {
 
-            this.setScale(0.96);
+            scene.tweens.add({
+                targets: this,
+                scaleX: 0.96,
+                scaleY: 0.96,
+                duration: 70
+            });
 
         });
 
         this.on("pointerup", () => {
 
-            this.setScale(1.03);
+            scene.tweens.add({
+                targets: this,
+                scaleX: 1.03,
+                scaleY: 1.03,
+                duration: 70
+            });
 
             if (this.callback) {
 
