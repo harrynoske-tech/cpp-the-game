@@ -11,10 +11,12 @@ class MenuScene extends Phaser.Scene {
 
         this.cameras.main.setBackgroundColor(Theme.Colors.background);
 
+        this.createBackground(width, height);
+
         new Title(
             this,
             width / 2,
-            180,
+            150,
             "CLOSE PROTECTION"
         );
 
@@ -29,6 +31,35 @@ class MenuScene extends Phaser.Scene {
                 this.scene.start("GameScene");
             }
         );
+
+    }
+
+    createBackground(width, height) {
+
+        this.grid = this.add.grid(
+            width / 2,
+            height / 2,
+            width * 2,
+            height * 2,
+            64,
+            64,
+            0x111111,
+            1,
+            0x202020,
+            0.4
+        );
+
+        this.tweens.add({
+
+            targets: this.grid,
+
+            angle: 360,
+
+            duration: 120000,
+
+            repeat: -1
+
+        });
 
     }
 
