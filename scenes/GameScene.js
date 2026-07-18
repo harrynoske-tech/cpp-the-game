@@ -46,6 +46,8 @@ this.suspicious = this.add.circle(
 
 this.suspiciousSpeed = 55;
 this.attackStarted = false;
+        this.attackDelay = 1500;
+this.attackStartTime = null;
 this.attackerStopped = false;
 this.attackerStopTime = 0;
 
@@ -187,9 +189,22 @@ else if (!this.attackStarted) {
 
     }
 
-    if (suspiciousDistance <= 80) {
+ if (suspiciousDistance <= 80) {
+
+    if (this.attackStartTime === null) {
+        this.attackStartTime = time;
+    }
+
+    if (time - this.attackStartTime >= this.attackDelay) {
         this.attackStarted = true;
     }
+
+}
+else {
+
+    this.attackStartTime = null;
+
+}
 
 } else {
 
