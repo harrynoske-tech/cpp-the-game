@@ -191,6 +191,27 @@ if (!this.attackStarted) {
 }
 
         // ------------------------
+// Player intercepts attacker
+// ------------------------
+
+if (
+    !this.missionComplete &&
+    Phaser.Math.Distance.Between(
+        this.player.x,
+        this.player.y,
+        this.suspicious.x,
+        this.suspicious.y
+    ) < 24
+) {
+
+    this.attackStarted = false;
+    this.suspiciousSpeed = 0;
+
+    this.suspicious.fillColor = 0xffff00;
+
+}
+
+        // ------------------------
 // Suspicious Person reaches VIP
 // ------------------------
 
