@@ -6,16 +6,19 @@ class GameScene extends Phaser.Scene {
 
     create() {
 
-        const width = this.scale.width;
-        const height = this.scale.height;
-
         this.cameras.main.setBackgroundColor(0x2a2a2a);
-        const map = new TrainingGround(this);
-map.build();
 
+        // World size
+        this.physics.world.setBounds(0, 0, 3000, 3000);
+
+        // Build map
+        const map = new TrainingGround(this);
+        map.build();
+
+        // Player
         this.player = this.add.circle(
-            width / 2,
-            height / 2,
+            1500,
+            1500,
             18,
             0x2ecc71
         );
@@ -28,6 +31,12 @@ map.build();
         });
 
         this.speed = 250;
+
+        // Camera
+        this.cameras.main.startFollow(this.player);
+        this.cameras.main.setZoom(1.4);
+        this.cameras.main.setBounds(0, 0, 3000, 3000);
+
     }
 
     update(time, delta) {
