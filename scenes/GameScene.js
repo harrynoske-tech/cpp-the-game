@@ -54,14 +54,63 @@ class GameScene extends Phaser.Scene {
 
     }
 
-    update(time, delta) {
+   update(time, delta) {
 
-        const distance = this.speed * (delta / 1000);
+    const distance = this.speed * (delta / 1000);
 
-        if (this.keys.left.isDown) this.player.x -= distance;
-        if (this.keys.right.isDown) this.player.x += distance;
-        if (this.keys.up.isDown) this.player.y -= distance;
-        if (this.keys.down.isDown) this.player.y += distance;
+    let dx = 0;
+    let dy = 0;
+
+    if (this.keys.left.isDown) dx -= distance;
+    if (this.keys.right.isDown) dx += distance;
+    if (this.keys.up.isDown) dy -= distance;
+    if (this.keys.down.isDown) dy += distance;
+
+    this.player.x += dx;
+    this.player.y += dy;
+
+    // VIP follows player
+    const followSpeed = 120 * (delta / 1000);
+
+    const angle = Phaser.Math.Angle.Between(
+        this.vip.x,
+        this.vip.y,
+        this.player.x,
+        this.player.y
+    );
+
+    const distanceToPlayer = Phaser.Math.Distance.Between(
+        this.vip.x,
+        this.vip.y,
+        this.player.x,
+        this.player.y
+    );
+
+    if (distanceToPlayer > 60) {
+
+        this.vip.x += Math.cos(angle) * followSpeed;
+        this.vip.y += Math.sin(angle) * followSpeed;
+
+    }
+
+    // Mission Complete
+    if (Phaser.Geom.Intersects.RectangleToRectangle(
+        this.player.getBounds(),
+        this.goal.getBounds()
+    )) {
+
+        alert("MISSION COMPLETE");
+
+        this.scene.restart();
+
+    }
+
+    // Mission Failed
+    if (distanceToPlayer > 250) {
+
+        alert("VIP LOST");
+
+        this.scene.restart();
 
     }
 
