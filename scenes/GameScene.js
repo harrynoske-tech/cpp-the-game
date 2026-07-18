@@ -165,14 +165,14 @@ if (!this.attackStarted) {
         this.vip.y
     );
 
-    if (suspiciousDistance > 180) {
+    if (suspiciousDistance > 80) {
 
         this.suspicious.x += Math.cos(suspiciousAngle) * this.suspiciousSpeed * (delta / 1000);
         this.suspicious.y += Math.sin(suspiciousAngle) * this.suspiciousSpeed * (delta / 1000);
 
     }
 
-    if (suspiciousDistance <= 180) {
+    if (suspiciousDistance <= 80) {
         this.attackStarted = true;
     }
 
