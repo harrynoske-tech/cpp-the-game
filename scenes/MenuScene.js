@@ -17,7 +17,7 @@ class MenuScene extends Phaser.Scene {
             this,
             width / 2,
             150,
-            "CLOSE PROTECTION"
+            "CPP - THE GAME"
         );
 
         new Button(
