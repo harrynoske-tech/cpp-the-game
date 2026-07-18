@@ -6,22 +6,26 @@ class GameScene extends Phaser.Scene {
 
     create() {
 
-        this.cameras.main.setBackgroundColor(0x2a2a2a);
+        this.cameras.main.setBackgroundColor(0x111111);
 
-        // World size
-        this.physics.world.setBounds(0, 0, 3000, 3000);
+        // Background
+        this.background = this.add.image(
+            0,
+            0,
+            "hotel-arrival"
+        );
 
-        // Build map
-        const map = new TrainingGround(this);
-        map.build();
+        this.background.setOrigin(0, 0);
 
         // Player
         this.player = this.add.circle(
-            1500,
-            1500,
-            18,
+            320,
+            600,
+            16,
             0x2ecc71
         );
+
+        this.speed = 250;
 
         this.keys = this.input.keyboard.addKeys({
             up: "W",
@@ -30,12 +34,23 @@ class GameScene extends Phaser.Scene {
             right: "D"
         });
 
-        this.speed = 250;
+        // VIP
+        this.vip = this.add.circle(
+            380,
+            600,
+            16,
+            0x3498db
+        );
 
-        // Camera
-        this.cameras.main.startFollow(this.player);
-        this.cameras.main.setZoom(1.4);
-        this.cameras.main.setBounds(0, 0, 3000, 3000);
+        // Mission Area
+        this.goal = this.add.rectangle(
+            690,
+            180,
+            160,
+            70,
+            0x00ff00,
+            0.25
+        );
 
     }
 
