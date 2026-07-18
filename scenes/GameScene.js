@@ -93,6 +93,36 @@ for (let i = 0; i < 10; i++) {
         this.vip.y += Math.sin(vipAngle) * this.vipSpeed * (delta / 1000);
 
         // ------------------------
+// Civilian AI
+// ------------------------
+
+for (const civilian of this.civilians) {
+
+    const angle = Phaser.Math.Angle.Between(
+        civilian.x,
+        civilian.y,
+        civilian.targetX,
+        civilian.targetY
+    );
+
+    civilian.x += Math.cos(angle) * 35 * (delta / 1000);
+    civilian.y += Math.sin(angle) * 35 * (delta / 1000);
+
+    if (Phaser.Math.Distance.Between(
+        civilian.x,
+        civilian.y,
+        civilian.targetX,
+        civilian.targetY
+    ) < 10) {
+
+        civilian.targetX = Phaser.Math.Between(100, 760);
+        civilian.targetY = Phaser.Math.Between(100, 720);
+
+    }
+
+}
+
+        // ------------------------
         // Mission Complete
         // ------------------------
 
