@@ -33,6 +33,16 @@ for (let i = 0; i < 10; i++) {
     civilian.targetY = Phaser.Math.Between(100, 720);
 
     this.civilians.push(civilian);
+    // Suspicious Person
+this.suspicious = this.add.circle(
+    120,
+    120,
+    12,
+    0xff4444
+);
+
+this.suspiciousSpeed = 55;
+this.attackStarted = false;
 
 }
 
