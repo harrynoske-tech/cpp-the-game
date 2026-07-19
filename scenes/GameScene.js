@@ -41,7 +41,7 @@ this.cameras.main.setDeadzone(120, 80);
         // Civilians
 this.civilians = [];
 
-const lanes = [520, 565];
+const lanes = [455, 495];
 
 for (let i = 0; i < 4; i++) {
 
