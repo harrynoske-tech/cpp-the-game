@@ -112,10 +112,25 @@ this.protectionText.setScrollFactor(0);
 
         const distance = this.speed * (delta / 1000);
 
-        if (this.keys.left.isDown) this.player.x -= distance;
-        if (this.keys.right.isDown) this.player.x += distance;
-        if (this.keys.up.isDown) this.player.y -= distance;
-        if (this.keys.down.isDown) this.player.y += distance;
+     if (this.keys.left.isDown) {
+    this.player.x -= distance;
+    this.player.setTexture("bodyguard-left");
+}
+
+if (this.keys.right.isDown) {
+    this.player.x += distance;
+    this.player.setTexture("bodyguard-right");
+}
+
+if (this.keys.up.isDown) {
+    this.player.y -= distance;
+    this.player.setTexture("bodyguard-back");
+}
+
+if (this.keys.down.isDown) {
+    this.player.y += distance;
+    this.player.setTexture("bodyguard-front");
+}
 
         // ------------------------
         // VIP walks toward entrance
