@@ -12,8 +12,14 @@ class GameScene extends Phaser.Scene {
         this.background = this.add.image(0, 0, "hotel-arrival");
         this.background.setOrigin(0, 0);
 
-        // Player
-        this.player = this.add.circle(320, 650, 16, 0x2ecc71);
+     // Player
+this.player = this.add.sprite(
+    320,
+    650,
+    "bodyguard-front"
+);
+
+this.player.setScale(2);
 
         // VIP
         this.vip = this.add.circle(380, 650, 16, 0x3498db);
