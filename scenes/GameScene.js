@@ -421,6 +421,8 @@ this.protectionText.setColor(colour);
     );
 
 }
+        this.goal.x = this.input.activePointer.worldX;
+this.goal.y = this.input.activePointer.worldY;
 
     }
 
