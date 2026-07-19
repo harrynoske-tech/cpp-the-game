@@ -40,7 +40,7 @@ this.cameras.main.setDeadzone(120, 80);
         // Civilians
 this.civilians = [];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 4; i++) {
 
     const civilian = this.add.circle(
         Phaser.Math.Between(120, 760),
