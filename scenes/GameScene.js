@@ -8,14 +8,30 @@ class GameScene extends Phaser.Scene {
 
         this.cameras.main.setBackgroundColor(0x111111);
 
-        // Background
-        this.background = this.add.image(0, 0, "hotel-arrival");
-        this.background.setOrigin(0, 0);
-        this.cameras.main.setBounds(
+        // Hotel background
+this.hotelBackground = this.add.image(
     0,
     0,
-    this.background.width,
-    this.background.height
+    "hotel-arrival"
+);
+
+this.hotelBackground.setOrigin(0, 0);
+
+// Police HQ background
+this.policeBackground = this.add.image(
+    this.hotelBackground.width,
+    0,
+    "police-hq"
+);
+
+this.policeBackground.setOrigin(0, 0);
+
+// Camera can move across both maps
+this.cameras.main.setBounds(
+    0,
+    0,
+    this.hotelBackground.width + this.policeBackground.width,
+    this.hotelBackground.height
 );
 
      // Player
