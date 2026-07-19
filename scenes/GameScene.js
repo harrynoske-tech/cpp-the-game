@@ -80,6 +80,7 @@ this.attackerStopTime = 0;
     0x00ff00,
     0.25
 );
+        console.log("Goal:", this.goal.x, this.goal.y);
 
         this.speed = 250;
 
@@ -125,6 +126,15 @@ this.protectionText.setScrollFactor(0);
         // ------------------------
 
         const distance = this.speed * (delta / 1000);
+        if (Phaser.Input.Keyboard.JustDown(this.keys.space)) {
+
+    console.log(
+        "Player:",
+        Math.round(this.player.x),
+        Math.round(this.player.y)
+    );
+
+}
 
     let moveX = 0;
 let moveY = 0;
