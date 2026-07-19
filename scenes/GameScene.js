@@ -73,8 +73,8 @@ this.attackerStopTime = 0;
 
         // Hotel entrance (goal)
 this.goal = this.add.rectangle(
-    this.player.x,
-    this.player.y,
+    400,
+    455,
     120,
     40,
     0x00ff00,
@@ -340,27 +340,27 @@ if (
         // Mission Complete
         // ------------------------
 
-        if (Phaser.Math.Distance.Between(
-            this.vip.x,
-            this.vip.y,
-            this.goal.x,
-            this.goal.y
-        ) < 40) {
+  if (false && Phaser.Math.Distance.Between(
+    this.vip.x,
+    this.vip.y,
+    this.goal.x,
+    this.goal.y
+) < 40) {
 
-            this.missionComplete = true;
+    this.missionComplete = true;
 
-            this.add.text(
-                250,
-                40,
-                "MISSION COMPLETE\n\nPress SPACE to restart",
-                {
-                    fontFamily: "Rajdhani",
-                    fontSize: "42px",
-                    color: "#00ff00"
-                }
-            );
-
+    this.add.text(
+        250,
+        40,
+        "MISSION COMPLETE\n\nPress SPACE to restart",
+        {
+            fontFamily: "Rajdhani",
+            fontSize: "42px",
+            color: "#00ff00"
         }
+    );
+
+}
 
         // ------------------------
         // VIP Lost
