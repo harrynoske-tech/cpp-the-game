@@ -128,15 +128,6 @@ this.protectionText.setScrollFactor(0);
         // ------------------------
 
         const distance = this.speed * (delta / 1000);
-        if (Phaser.Input.Keyboard.JustDown(this.keys.space)) {
-
-    console.log(
-        "Player:",
-        Math.round(this.player.x),
-        Math.round(this.player.y)
-    );
-
-}
 
     let moveX = 0;
 let moveY = 0;
@@ -342,7 +333,7 @@ if (
         // Mission Complete
         // ------------------------
 
-  if (false && Phaser.Math.Distance.Between(
+  if (Phaser.Math.Distance.Between(
     this.vip.x,
     this.vip.y,
     this.goal.x,
@@ -423,8 +414,6 @@ this.protectionText.setColor(colour);
     );
 
 }
-        this.goal.x = this.input.activePointer.worldX;
-this.goal.y = this.input.activePointer.worldY;
 
     }
 
