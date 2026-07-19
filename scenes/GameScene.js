@@ -73,14 +73,15 @@ this.attackerStopTime = 0;
 
         // Hotel entrance (goal)
 this.goal = this.add.rectangle(
-    400,
-    455,
+    778,
+    226,
     120,
     40,
     0x00ff00,
     0.25
 );
-        console.log("Goal:", this.goal.x, this.goal.y);
+
+this.goal.setVisible(false);
 
         this.speed = 250;
 
