@@ -168,19 +168,32 @@ if (moveX !== 0 || moveY !== 0) {
     this.player.y += (moveY / length) * distance;
 
 }
-        // ------------------------
-        // VIP walks toward entrance
-        // ------------------------
+// ------------------------
+// VIP follows player
+// ------------------------
 
-        const vipAngle = Phaser.Math.Angle.Between(
-            this.vip.x,
-            this.vip.y,
-            this.goal.x,
-            this.goal.y
-        );
+const followDistance = 60;
 
-        this.vip.x += Math.cos(vipAngle) * this.vipSpeed * (delta / 1000);
-        this.vip.y += Math.sin(vipAngle) * this.vipSpeed * (delta / 1000);
+const distanceToPlayer = Phaser.Math.Distance.Between(
+    this.vip.x,
+    this.vip.y,
+    this.player.x,
+    this.player.y
+);
+
+if (distanceToPlayer > followDistance) {
+
+    const vipAngle = Phaser.Math.Angle.Between(
+        this.vip.x,
+        this.vip.y,
+        this.player.x,
+        this.player.y
+    );
+
+    this.vip.x += Math.cos(vipAngle) * this.vipSpeed * (delta / 1000);
+    this.vip.y += Math.sin(vipAngle) * this.vipSpeed * (delta / 1000);
+
+}
 
         // ------------------------
 // Civilian AI
