@@ -72,14 +72,14 @@ this.attackerStopped = false;
 this.attackerStopTime = 0;
 
         // Hotel entrance (goal)
-        this.goal = this.add.rectangle(
-            690,
-            180,
-            160,
-            70,
-            0x00ff00,
-            0.25
-        );
+ this.goal = this.add.rectangle(
+    400,
+    455,
+    120,
+    40,
+    0x00ff00,
+    0.25
+);
 
         this.speed = 250;
 
