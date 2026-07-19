@@ -188,25 +188,19 @@ if (moveX !== 0 || moveY !== 0) {
 
 for (const civilian of this.civilians) {
 
-    const angle = Phaser.Math.Angle.Between(
-        civilian.x,
-        civilian.y,
-        civilian.targetX,
-        civilian.targetY
-    );
+    civilian.x += civilian.direction * civilian.speed * (delta / 1000);
 
-    civilian.x += Math.cos(angle) * 35 * (delta / 1000);
-    civilian.y += Math.sin(angle) * 35 * (delta / 1000);
+    if (civilian.x >= civilian.maxX) {
 
-    if (Phaser.Math.Distance.Between(
-        civilian.x,
-        civilian.y,
-        civilian.targetX,
-        civilian.targetY
-    ) < 10) {
+        civilian.direction = -1;
+        civilian.setTexture("civilian-left");
 
-        civilian.targetX = Phaser.Math.Between(100, 760);
-        civilian.targetY = Phaser.Math.Between(100, 720);
+    }
+
+    if (civilian.x <= civilian.minX) {
+
+        civilian.direction = 1;
+        civilian.setTexture("civilian-right");
 
     }
 
