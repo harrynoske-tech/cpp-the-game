@@ -19,7 +19,7 @@ this.hotelBackground.setOrigin(0, 0);
 
 // Police HQ background
 const policeOffsetX = 0;
-const policeOffsetY = 0;
+const policeOffsetY = 5;
 
 this.policeBackground = this.add.image(
     this.hotelBackground.width + policeOffsetX,
