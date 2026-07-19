@@ -25,7 +25,7 @@ this.player = this.add.sprite(
     "bodyguard-front"
 );
 
-this.player.setScale(0.12);
+this.player.setScale(0.14);
         this.cameras.main.startFollow(
     this.player,
     true,
