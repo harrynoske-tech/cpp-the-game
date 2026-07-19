@@ -11,6 +11,11 @@ class PreloadScene extends Phaser.Scene {
             "assets/backgrounds/hotel-arrival.png"
         );
 
+        this.load.image(
+    "police-hq",
+    "assets/backgrounds/police-hq.png"
+);
+
         // Bodyguard
         this.load.image(
             "bodyguard-front",
